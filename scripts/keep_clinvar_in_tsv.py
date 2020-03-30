@@ -2,7 +2,7 @@ import csv
 counter = 0
 # Here we specify the input and output files.
 # The output file will have all the input rows which have a valid clinvar entry
-with open('E:/dbNSFP4.0a_variant.chrY', 'r', 262144) as f:
+with open('E:/dbNSFP4.0a_variant.chr', 'r', 262144) as f:
     with open('chrY.tsv', 'w') as o:
         reader = csv.DictReader(f, delimiter='\t')
         for row in reader:
