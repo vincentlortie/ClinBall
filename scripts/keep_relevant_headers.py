@@ -16,6 +16,9 @@ def main(inp, out, cols):
     with open(inp, 'r', 262144) as f:
         with open(out, 'w') as o:
             reader = csv.DictReader(f, delimiter='\t')
+            for header in KEEP_HEADERS:
+                if header not in reader.fieldnames:
+                    raise Exception('header %s is not specified header list' % header)
             o.write('\t'.join(KEEP_HEADERS) + '\n')
             for row in reader:
                 new_row = []
