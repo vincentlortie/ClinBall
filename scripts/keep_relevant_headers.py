@@ -23,6 +23,8 @@ def main(inp, out, cols):
             for row in reader:
                 new_row = []
                 for key, val in row.items():
+                    if val is None:
+                        continue
                     if key and key.strip() in KEEP_HEADERS:
                         if ';' in val:
                             preds_arr = val.split(';')
