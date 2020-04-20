@@ -7,7 +7,7 @@ The goal of this project is to predict ClinVar predictions on variants that lack
 ---
 # Report Draft 
 TODO:
- - add hype about mutation count
+ - add details about mutation count: how using J's suggestion we tried to incorporate genomic context
  - add presentation-ready sentences 
 
 ## Introduction & motivation
@@ -18,7 +18,34 @@ that we are interested in feature extraction as well as accurate predictions.
 * Calling variants results in hundreds of potential clinically improtant mutations, even after filtering. We need to reduce the number of false positives, so precision is more important than recall: the need is to have a small number of highly recommended mutations, where if the critical variant is not found then we are easily able to relax the thresholds. (this might not be clearly written but is an important point for guiding our decisions) 
 
 ## Results
-* Experimental table of > 20 experiments
+* Experimental table of > 20 experiments:
+| **Notebook number:**                         | **Input data: total # of examples** | **Model: details**       | **Evaluation: baseline/primary class = 1**    | **Evaluation: Accuracy** | **Evaluation: Precision** | **Evaluation: Recall ** | **Evaluation: F1** | **Evaluation: AUC** |
+| -------------------------------------------- | ----------------------------------- | ------------------------ | --------------------------------------------- | ------------------------ | ------------------------- | ----------------------- | ------------------ | ------------------- |
+| **1.1.2\_4.svm**                             | 13767                               | SVM (rbf)                | 0.71                                          | 0.74                     | 0.64                      | 0.16                    | 0.25               | 0.64                |
+| **2.1.2\_4.RF**                              | 13767                               | RF (n=10)                | 0.71                                          | 0.80                     | 0.64                      | 0.65                    | 0.64               | 0.85                |
+| **3.1.2\_4.nn TORERUN**                      | 13767                               | 3 hidden layers          | 0.71                                          | 0.73                     | 0.36                      | 0.5                     | 0.42               |                     |
+| 3.1.2\_4.nn<br>**MK ran monday (disc)**      |                                     |                          | 0.71 (but 0.68 in test set of 3442 examples ) | 0.68                     | 0.0                       | 0.0                     | nan                |                     |
+| 4.2.2\_4.svm                                 | 13767                               | SVM (rbf)                | 0.71                                          | 0.74                     | 0.65                      | 0.21                    | 0.32               | 0.62                |
+| 5.2.2\_4.RF                                  | 13767                               | RF(n=10)                 | 0.71                                          | 0.80                     | 0.64                      | 0.63                    | 0.68               | 0.84                |
+| 6.2.2\_4.NN                                  |                                     |                          | 0.71 (but 0.72 in test set of 3434 examples)  | 0.72\*                   | 0.0                       | 0.0                     | nan                |                     |
+| 7.3.2\_4.svm                                 | 13767                               | SVM (rbf)                | 0.71                                          | 0.74                     | 0.68                      | 0.18                    | 0.0.28             | 0.70                |
+| 8.3.2\_4.RF                                  | 13767                               | RF(n=10)                 | 0.71                                          | 0.81                     | 0.64                      | 0.68                    | 0.66               | 0.85                |
+| 9.3.2\_4.nn                                  |                                     |                          | 0.71 (but 0.68 in test set of 3442 examples ) | 0.68                     |                           |                         |                    |                     |
+| 10.4.2\_4.svm                                | 13767                               | SVM (rbf)                | 0.71                                          | 0.75                     | 0.76                      | 0.16                    | 0.27               | 0.69                |
+| 11.4.2\_4.RF                                 | 13767                               | RF(n=10)                 | 0.71                                          | 0.86                     | 0.75                      | 0.74                    | 0.74               | 0.90                |
+| 12.4.2\_4.nn                                 | 13767                               | 3 hidden layers          | 0.71                                          | 0.72                     | 0                         | 0                       | nan                |                     |
+| 13.1.2\_4u.svm                               | 40905                               | svm(rbf), balanced class | see below                                     | 0.39                     | 0.80                      | 0.26                    | 0.39               |                     |
+| 14.1.2\_4u.RF                                | 40905                               | RF(n=10) balanced class  | see below                                     | 0.67                     | 0.76                      | 0.77                    | 0.77               |                     |
+| 15.4.2\_4.nn<br>**TO RERUN WITH SPLIT SETS** |                                     | Balanced dataloader      |                                               | 0.66                     | 0.47                      | 0.59                    | 0.56               |                     |
+| 16.4.2\_4.GB (compare with 11)               |                                     | Gradient Boost (n=10)    |                                               | 0.82                     | 0.82                      | 0.47                    | 0.59               |                     |
+| 17.5.2\_4.svm                                | 13767                               | svm(rbf)                 | 0.71                                          | 0.75                     | 0.76                      | 0.16                    | 0.27               | 0.69                |
+| 18.5.2\_4.RF                                 | 13767                               | RF(n=10)                 | 0.71                                          | 0.87                     | 0.79                      | 0.73                    | 0.76               | 0.93                |
+| 19.5.2\_4u.RF                                | 40905                               | RF(n=10) balanced        |                                               | 0.73                     | 0.77                      | 0.86                    | 0.81               |                     |
+| 20.6.2\_4.RF                                 | 40905                               | RF(n=10) balanced        |                                               | 0.74                     | 0.78                      | 0.88                    | 0.82               |                     |
+| 21.7.2\_4.RF                                 | 40905                               | RF(n=100)                |                                               | 0.75                     | 0.89                      | 0.78                    | 0.83               |                     |
+| 22.8.5\_7.RF                                 | 40905                               | RF(n=100)                |                                               | 0.76                     | 0.77                      | 0.91                    | 0.84               |                     |
+
+
 * *I think we should add the in-silico scores and binning results as well* 
 
 ## Methodology 
