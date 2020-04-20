@@ -3,3 +3,6 @@
 # ClinBall
 
 The goal of this project is to predict ClinVar predictions on variants that lack existing ClinVar data. 
+
+
+Just making sure I have edit rights on the github directly 
