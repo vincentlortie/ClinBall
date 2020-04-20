@@ -18,7 +18,8 @@ that we are interested in feature extraction as well as accurate predictions.
 * Calling variants results in hundreds of potential clinically improtant mutations, even after filtering. We need to reduce the number of false positives, so precision is more important than recall: the need is to have a small number of highly recommended mutations, where if the critical variant is not found then we are easily able to relax the thresholds. (this might not be clearly written but is an important point for guiding our decisions) 
 
 ## Results
-* Experimental table of > 20 experiments:
+* Experimental table of > 20 experiments: ( Notebook naming is as follows: id.featureset.chromosomes.model (ex: 1.1.234.svm))
+
 | **Notebook number:**                         | **Input data: total # of examples** | **Model: details**       | **Evaluation: baseline/primary class = 1**    | **Evaluation: Accuracy** | **Evaluation: Precision** | **Evaluation: Recall ** | **Evaluation: F1** | **Evaluation: AUC** |
 | -------------------------------------------- | ----------------------------------- | ------------------------ | --------------------------------------------- | ------------------------ | ------------------------- | ----------------------- | ------------------ | ------------------- |
 | **1.1.2\_4.svm**                             | 13767                               | SVM (rbf)                | 0.71                                          | 0.74                     | 0.64                      | 0.16                    | 0.25               | 0.64                |
@@ -44,6 +45,7 @@ that we are interested in feature extraction as well as accurate predictions.
 | 20.6.2\_4.RF                                 | 40905                               | RF(n=10) balanced        |                                               | 0.74                     | 0.78                      | 0.88                    | 0.82               |                     |
 | 21.7.2\_4.RF                                 | 40905                               | RF(n=100)                |                                               | 0.75                     | 0.89                      | 0.78                    | 0.83               |                     |
 | 22.8.5\_7.RF                                 | 40905                               | RF(n=100)                |                                               | 0.76                     | 0.77                      | 0.91                    | 0.84               |                     |
+
 
 
 * *I think we should add the in-silico scores and binning results as well* 
