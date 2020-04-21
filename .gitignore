@@ -3,3 +3,4 @@ notebooks/.ipynb_checkpoints/
 notebooks/experiments/.ipynb_checkpoints/
 notebooks/experiments/data_processing/.ipynb_checkpoints/
 app/env/
+data/
