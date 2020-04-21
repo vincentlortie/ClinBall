@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <title>Variant submit</title>
+    </head>
+    <body>
+        <h2> Enter a variant's coordinates to make a prediction </h2>
+        <form action="{{ url_for('predict') }}" method="post">
+            <div>
+                Chromosome:
+                <input type="text" name="chromosome" />
+            </div>
+            <div>
+                Position:
+                <input type="text" name="position" />
+            </div>
+            <div>
+                Ref:
+                <input type="text" name="ref" />
+            </div>
+            <div>
+                Alt:
+                <input type="text" name="alt" />
+            </div>
+            {{ form.csrf_token }}
+        </form>
+    </body>
+</html>

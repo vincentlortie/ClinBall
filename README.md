@@ -51,7 +51,7 @@ that we are interested in feature extraction as well as accurate predictions.
 * *I think we should add the in-silico scores and binning results as well* 
 
 ## Methodology 
-* Models: Test three different model architechtures with increasing hyperparameter adjustments and increased data.
+* Models: Test three different model architectures with increasing hyperparameter adjustments and increased data.
 * Input data:
   - Labeled output: Begin with binary class prediction, expand to include unknown labels so as to harness as much information from ClinVar as possible. Description of class distribution is below, models were trained with balanced by proportion of class label. 
   - Features: largely taken from dbNSFP which is a aggregation of >350 features including in-silico predictors, other high-level aggregated metrics, and low level information about chemistry and biological annotations at the position of interest. Feature selection is critical for our project because we seek to learn which features are most informative.
@@ -68,8 +68,7 @@ that we are interested in feature extraction as well as accurate predictions.
 
 
 
-
---- 
+---
 # Supplemental notes
 
 ## Distribution of labels in the data:
@@ -85,9 +84,12 @@ PROPORTION OF LABELS:
 ## Predicting on unlabeled data using model 19: 
 
 1. Generate the dataframe that has the 9 features of feature set 5 for chromosome 2, 3, 4 for pathogentic, benign, and unknown. data_processing/Dataprocessing_2-4u_featureset5.ipynb. pickle the dataframe → 
-
 2. Use the picked dataframe to train a model, 19.5.2_4u.RF.ipynb, pickle the model → pickled_models/19.5.2_4u.RF.pkl
-
 3. Generate dataframe that has 9 features of feature set 5 for unlabeled data from chromosome 1,2,3,4: → store in pickled/chr1-4_nolabels.pkl
-
 4. Use the trained model on different data: chromosomes 1, 2, 3, 4 with no clinvar labels. model_predictions/dbNSFP_chr1_4_nolabels.ipynb
+
+## Dead ends
+
+* Integrating pharma db with our dataset -> gene - drug associations did not perform adequately in the model. Getting more depth did not help either.
+* Manually curating the training data did not help either . We selected the data points with the most complete data and the results did not vary.
+*  lncRNA multiple databases exist. However, the data format was incompatible with ours and this area is rather novel. Reliable standards have not emerged yet to the point where we can use the data.
