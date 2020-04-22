@@ -1,6 +1,7 @@
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Ahv6rKT_1iJg3o93t9_sews-yafoBAsF#scrollTo=KmOp5bSsLvO1)
 
-# ClinBall
+# ClinBall ![alt text](https://a.slack-edge.com/production-standard-emoji-assets/10.2/apple-medium/1f63b@2x.png)
+
 
 The goal of this project is to predict ClinVar predictions on variants that lack existing ClinVar data. 
 
