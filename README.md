@@ -3,7 +3,7 @@
 
 The goal of this project is to predict ClinVar predictions on variants that lack existing ClinVar data. 
 
-Final Model Presented can be found at `notebooks/experiments/AIGenomics_Model_Quickstart.ipynb`. For quick start to run, please see `notebooks/QuickStart.txt` or clone and run `notebooks/experiments/AIGenomics_Model_Quickstart.ipynb` directly. 
+Final Model Presented can be found [here](https://github.com/vincentlortie/ClinBall/blob/master/notebooks/experiments/AIGenomics_Model_Quickstart.ipynb) or at `notebooks/experiments/AIGenomics_Model_Quickstart.ipynb`. For quick start to run, please see `notebooks/QuickStart.txt` or clone and run `notebooks/experiments/AIGenomics_Model_Quickstart.ipynb` directly. 
 
 ---
 # Report
@@ -75,8 +75,11 @@ that we are interested in feature extraction as well as accurate predictions
 * Novel feature: in order to incorporate a measure of genomic context, we sought to use the position of the variant to assess the variants nearby. Intially, a convolution was applied but to use it successfully with other features, we decided to simplify and count mutations at various Kb distances from the variant in question. This is added in a seperate data processing step.
 
 ## Discussion of Results
-* Based this on the table, highlight only the experiments that are most informative to compare. 
-* Can include here how we used the results of earlier experiments to inform the subsequent model setup.
+* Ran various models to test which would work best for our data. Selected Random Forest as it preformed favorably. 
+* Experimented with various feature sets that would work well together. Selected Feature set 5 as trade off between preformance and easily interpretable features. 
+* Fixing model (RF) and features (set 5), we fine tuned the parameters of the model.
+* Cross validation is a work in progress.
+* Unknonw labels were complex to work with as it is not quite its own class, using these examples is a work in progress.
 
 ## Discussion of Future Directions and Limitations 
 * We are bound by the assumption, biases, and data of ClinVar. With the constraints that we faced, we preferentially set our efforts to selecting the best features + model combination possible, using conventional trainings, validation, and testings splits of the labeled clinvar data. We would explore alternative sources of pathogenically labeled variants to evaluate the geerailzability of our findings. For example, Human Mandelian Genomic Database *check name and link to* or manually curated clinical findings would show how well the model trained on clinvar would preform on other datasets. The attempts in this direction were meaningful, but being the strict requirement of disjoint data to avoid biases was beyond the scope of what we could finish. 
