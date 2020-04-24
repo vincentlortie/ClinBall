@@ -1,0 +1,15 @@
+# Quick start:
+To run the final selected model, here are the steps required:
+
+
+1. From all data, select features by chr: using `scripts/keep_relevant_headers.py` 
+```
+for i in 2 3 4; do python3 keep_relevant_headers.py ../data/chr2-4_with_gene/chr$i\_gene.tsv \
+../data/chr2-4_with_gene/chr$i.out_set2.tsv --cols chr,pos,ref,alt,aapos,codonpos,Polyphen2_HVAR_pred,\
+GenoCanyon_score,LINSIGHT,clinvar_clnsig,RVIS_ExAC,ExAC_cnv.score,SORVA_LOF_MAF0.005_HetOrHom; done
+```
+
+2. `notebooks/experiments/data_processing/Dataprocessing_2-4_featureset5.ipynb`
+ to generate pickled dataframe: `pickled/chr2-4_featureset5.pkl`
+
+3. run model `notebooks/experiments/AIGenomics_Model_Quickstart.ipynb`
